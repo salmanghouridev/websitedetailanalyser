@@ -1,0 +1,11 @@
+Flask
+Flask-CORS
+builtwith
+requests
+python-whois
+pyOpenSSL
+urllib3
+beautifulsoup4
+geopy
+selenium
+streamlit
