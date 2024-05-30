@@ -186,22 +186,6 @@ def get_website_details(url):
     details['recommendations'] = recommendations
     return details
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/details', methods=['POST'])
-def details():
-    url = request.form['url']
-    website_details = get_website_details(url)
-    return render_template('details.html', url=url, website_details=website_details)
-
-@app.route('/api/details', methods=['POST'])
-def api_details():
-    url = request.json['url']
-    website_details = get_website_details(url)
-    return jsonify(website_details)
-
 # Streamlit part
 st.title('Website Details Fetcher')
 
