@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Website Details Fetcher",
+    "version": "1.0",
+    "description": "Fetch website details and display them",
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "storage",
+      "http://*/*",
+      "https://*/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    }
+  }
+  

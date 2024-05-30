@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Details for {{ url }}</h1>
+        {% if 'error' in website_details %}
+            <p class="error">Error: {{ website_details.error }}</p>
+        {% else %}
+            <div class="section">
+                <h2>Technologies:</h2>
+                <ul>
+                    {% if 'technologies' in website_details and 'error' not in website_details.technologies %}
+                        {% for tech in website_details.technologies %}
+                            <li>{{ tech }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>Error: {{ website_details.technologies.error }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="section">
+                <h2>IP Address:</h2>
+                {% if 'ip_address' in website_details %}
+                    <p>{{ website_details.ip_address }}</p>
+                {% else %}
+                    <p>Error: {{ website_details.ip_address.error }}</p>
+                {% endif %}
+            </div>
+            <div class="section">
+                <h2>Speed:</h2>
+                {% if 'speed' in website_details %}
+                    <p>{{ website_details.speed }} seconds</p>
+                {% else %}
+                    <p>Error: {{ website_details.speed.error }}</p>
+                {% endif %}
+            </div>
+            <div class="section">
+                <h2>Domain Information:</h2>
+                <ul>
+                    {% if 'domain_info' in website_details and 'error' not in website_details.domain_info %}
+                        {% for key, value in website_details.domain_info.items() %}
+                            <li><strong>{{ key }}:</strong> {{ value }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>Error: {{ website_details.domain_info.error }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="section">
+                <h2>HTTP Headers:</h2>
+                <ul>
+                    {% if 'http_headers' in website_details and 'error' not in website_details.http_headers %}
+                        {% for key, value in website_details.http_headers.items() %}
+                            <li><strong>{{ key }}:</strong> {{ value }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>Error: {{ website_details.http_headers.error }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% if 'contact_info' in website_details %}
+            <div class="section">
+                <h2>Contact Information:</h2>
+                <ul>
+                    {% if 'phone' in website_details.contact_info %}
+                        <li><strong>Phone:</strong> {{ website_details.contact_info.phone }}</li>
+                    {% endif %}
+                    {% if 'email' in website_details.contact_info %}
+                        <li><strong>Email:</strong> {{ website_details.contact_info.email }}</li>
+                    {% endif %}
+                    {% if 'address' in website_details.contact_info %}
+                        <li><strong>Address:</strong> {{ website_details.contact_info.address }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+            {% if 'email_addresses' in website_details %}
+            <div class="section">
+                <h2>Email Addresses:</h2>
+                <ul>
+                    {% for email in website_details.email_addresses %}
+                        <li>{{ email }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% if 'ssl_info' in website_details %}
+            <div class="section">
+                <h2>SSL Information:</h2>
+                <ul>
+                    {% if 'error' not in website_details.ssl_info %}
+                        {% for key, value in website_details.ssl_info.items() %}
+                            <li><strong>{{ key }}:</strong> {{ value }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>Error: {{ website_details.ssl_info.error }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+            {% if 'geolocation' in website_details %}
+            <div class="section">
+                <h2>Geolocation:</h2>
+                <ul>
+                    {% if 'error' not in website_details.geolocation %}
+                        {% for key, value in website_details.geolocation.items() %}
+                            <li><strong>{{ key }}:</strong> {{ value }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>Error: {{ website_details.geolocation.error }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+            <div class="section">
+                <h2>Link Redirects:</h2>
+                {% if 'link_redirects' in website_details %}
+                    <p>{{ website_details.link_redirects }}</p>
+                {% else %}
+                    <p>Error: {{ website_details.link_redirects.error }}</p>
+                {% endif %}
+            </div>
+            <div class="section">
+                <h2>API Requests:</h2>
+                <ul>
+                    {% if 'api_requests' in website_details %}
+                        {% for api in website_details.api_requests %}
+                            <li>{{ api }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <li>Error: {{ website_details.api_requests.error }}</li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="section">
+                <h2>Performance Metrics:</h2>
+                {% if 'page_load_time' in website_details %}
+                    <p>Page Load Time: {{ website_details.page_load_time }} seconds</p>
+                {% else %}
+                    <p>Error: {{ website_details.page_load_time.error }}</p>
+                {% endif %}
+            </div>
+            <div class="section">
+                <h2>Mobile Friendliness:</h2>
+                {% if 'mobile_friendliness' in website_details %}
+                    <p>{{ website_details.mobile_friendliness }}</p>
+                {% else %}
+                    <p>Viewport meta tag is present. The website is likely mobile-friendly.</p>
+                {% endif %}
+            </div>
+            <div class="section">
+                <h2>Recommendations:</h2>
+                <ul>
+                    {% for recommendation in website_details.recommendations %}
+                        <li>{{ recommendation }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

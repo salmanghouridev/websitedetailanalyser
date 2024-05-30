@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 300px;
+    padding: 10px;
+  }
+  
+  #loading {
+    display: none;
+  }
+  
+  #details {
+    display: none;
+  }
+  
+  h1 {
+    font-size: 18px;
+  }
+  
+  input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+  
+  .tablink {
+    flex: 1;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .tablink.active {
+    background-color: #ddd;
+  }
+  
+  .tabcontent {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  
+  .tabcontent p {
+    margin: 0;
+  }
+  

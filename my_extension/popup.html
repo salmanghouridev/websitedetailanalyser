@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Details</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Website Details</h1>
+  <input type="text" id="urlInput" placeholder="Enter URL">
+  <button id="getDetailsBtn">Get Details</button>
+  <div id="loading">Loading...</div>
+  <div id="details">
+    <div class="tabs">
+      <button class="tablink" onclick="openTab(event, 'url-tab')">URL</button>
+      <button class="tablink" onclick="openTab(event, 'ip-tab')">IP Address</button>
+      <button class="tablink" onclick="openTab(event, 'technologies-tab')">Technologies</button>
+      <button class="tablink" onclick="openTab(event, 'domain-tab')">Domain Info</button>
+      <button class="tablink" onclick="openTab(event, 'ssl-tab')">SSL Info</button>
+      <button class="tablink" onclick="openTab(event, 'performance-tab')">Performance</button>
+      <button class="tablink" onclick="openTab(event, 'recommendations-tab')">Recommendations</button>
+    </div>
+    <div id="url-tab" class="tabcontent"></div>
+    <div id="ip-tab" class="tabcontent"></div>
+    <div id="technologies-tab" class="tabcontent"></div>
+    <div id="domain-tab" class="tabcontent"></div>
+    <div id="ssl-tab" class="tabcontent"></div>
+    <div id="performance-tab" class="tabcontent"></div>
+    <div id="recommendations-tab" class="tabcontent"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
