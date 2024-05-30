@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, jsonify
+import streamlit as st
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import builtwith
 import requests
@@ -15,6 +16,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+# Initialize Flask app
 app = Flask(__name__)
 CORS(app)  # Enable CORS
 
@@ -200,5 +202,56 @@ def api_details():
     website_details = get_website_details(url)
     return jsonify(website_details)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Streamlit part
+st.title('Website Details Fetcher')
+
+url = st.text_input('Enter URL')
+
+if st.button('Get Details'):
+    with st.spinner('Fetching details...'):
+        website_details = get_website_details(url)
+        
+        if 'error' in website_details:
+            st.error(website_details['error'])
+        else:
+            st.subheader('URL')
+            st.write(website_details.get('url', 'N/A'))
+            
+            st.subheader('IP Address')
+            st.write(website_details.get('ip_address', 'N/A'))
+            
+            st.subheader('Technologies')
+            st.write(website_details.get('technologies', 'N/A'))
+            
+            st.subheader('Domain Info')
+            st.write(website_details.get('domain_info', 'N/A'))
+            
+            st.subheader('SSL Info')
+            st.write(website_details.get('ssl_info', 'N/A'))
+            
+            st.subheader('Performance')
+            st.write(f"Page Load Time: {website_details.get('page_load_time', 'N/A')} seconds")
+            
+            st.subheader('Recommendations')
+            st.write('\n'.join(website_details.get('recommendations', [])))
+            
+            st.subheader('Contact Info')
+            st.write(website_details.get('contact_info', 'N/A'))
+            
+            st.subheader('Email Addresses')
+            st.write(website_details.get('email_addresses', 'N/A'))
+            
+            st.subheader('API Requests')
+            st.write(website_details.get('api_requests', 'N/A'))
+            
+            st.subheader('Link Redirects')
+            st.write(website_details.get('link_redirects', 'N/A'))
+            
+            st.subheader('HTTP Headers')
+            st.write(website_details.get('http_headers', 'N/A'))
+            
+            st.subheader('Geolocation')
+            st.write(website_details.get('geolocation', 'N/A'))
+            
+            st.subheader('Mobile Friendliness')
+            st.write(website_details.get('mobile_friendliness', 'N/A'))
